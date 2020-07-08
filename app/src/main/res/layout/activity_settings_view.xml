@@ -1,9 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".settingsView">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="367dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/temperatureLabel"
+            android:layout_width="140dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:text="TEMPERATURE"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/temperatureDisplay"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/temperatureLabel"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/accelerationLabel"
+            android:layout_width="140dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:text="ACCELERATION"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/temperatureLabel" />
+
+        <EditText
+            android:id="@+id/accelerationDisplay"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/accelerationLabel"
+            app:layout_constraintTop_toBottomOf="@+id/temperatureDisplay" />
+
+        <TextView
+            android:id="@+id/speedLabel"
+            android:layout_width="140dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:text="SPEED"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/accelerationLabel" />
+
+        <EditText
+            android:id="@+id/speeedDisplay"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/speedLabel"
+            app:layout_constraintTop_toBottomOf="@+id/accelerationDisplay" />
+
+        <TextView
+            android:id="@+id/batteryLevelLabel"
+            android:layout_width="140dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:text="BATTERY LEVEL"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/speedLabel" />
+
+        <EditText
+            android:id="@+id/batteryLevelDisplay"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/batteryLevelLabel"
+            app:layout_constraintTop_toBottomOf="@+id/speeedDisplay" />
+
+        <TextView
+            android:id="@+id/pwmWidthLabel"
+            android:layout_width="140dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:text="PWM WIDTH"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/batteryLevelLabel" />
+
+        <EditText
+            android:id="@+id/pwmWidthDisplay"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/pwmWidthLabel"
+            app:layout_constraintTop_toBottomOf="@+id/batteryLevelDisplay" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="367dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/powerWoltageLabel"
+            android:layout_width="140dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:text="POWER WOLTAGE"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/powerWoltageDisplay"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/powerWoltageLabel"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/motorWoltageLabel"
+            android:layout_width="140dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:text="MOTOR WOLTAGE"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/powerWoltageLabel" />
+
+        <EditText
+            android:id="@+id/motorWoltageDisplay"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/motorWoltageLabel"
+            app:layout_constraintTop_toBottomOf="@+id/powerWoltageDisplay" />
+
+        <TextView
+            android:id="@+id/coreSupplyWoltageLabel"
+            android:layout_width="140dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:text="CORE WOLTAGE"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/motorWoltageLabel" />
+
+        <EditText
+            android:id="@+id/coreSupplyWoltageDisplay"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/coreSupplyWoltageLabel"
+            app:layout_constraintTop_toBottomOf="@+id/motorWoltageDisplay" />
+
+        <TextView
+            android:id="@+id/chargingLabel"
+            android:layout_width="140dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:text="CHARGING"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/coreSupplyWoltageLabel" />
+
+        <EditText
+            android:id="@+id/chargingDisplay"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/chargingLabel"
+            app:layout_constraintTop_toBottomOf="@+id/coreSupplyWoltageDisplay" />
+
+        <TextView
+            android:id="@+id/chargingCurrentLabel"
+            android:layout_width="140dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:text="CHARGING CURRENT"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chargingLabel" />
+
+        <EditText
+            android:id="@+id/chargingCurrentDisplay"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/chargingCurrentLabel"
+            app:layout_constraintTop_toBottomOf="@+id/chargingDisplay" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
