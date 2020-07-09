@@ -132,18 +132,18 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/powerWoltageLabel"
+            android:id="@+id/powerVoltageLabel"
             android:layout_width="140dp"
             android:layout_height="20dp"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="50dp"
-            android:text="POWER WOLTAGE"
+            android:text="POWER VOLTAGE"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/powerWoltageDisplay"
+            android:id="@+id/powerVoltageDisplay"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginTop="40dp"
@@ -151,22 +151,22 @@
             android:inputType="number"
             android:text="0"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/powerWoltageLabel"
+            app:layout_constraintStart_toEndOf="@+id/powerVoltageLabel"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/motorWoltageLabel"
+            android:id="@+id/motorVoltageLabel"
             android:layout_width="140dp"
             android:layout_height="20dp"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="50dp"
-            android:text="MOTOR WOLTAGE"
+            android:text="MOTOR VOLTAGE"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/powerWoltageLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/powerVoltageLabel" />
 
         <EditText
-            android:id="@+id/motorWoltageDisplay"
+            android:id="@+id/motorVoltageDisplay"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginTop="30dp"
@@ -174,22 +174,22 @@
             android:inputType="number"
             android:text="0"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/motorWoltageLabel"
-            app:layout_constraintTop_toBottomOf="@+id/powerWoltageDisplay" />
+            app:layout_constraintStart_toEndOf="@+id/motorVoltageLabel"
+            app:layout_constraintTop_toBottomOf="@+id/powerVoltageDisplay" />
 
         <TextView
-            android:id="@+id/coreSupplyWoltageLabel"
+            android:id="@+id/coreSupplyVoltageLabel"
             android:layout_width="140dp"
             android:layout_height="20dp"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="50dp"
-            android:text="CORE WOLTAGE"
+            android:text="CORE VOLTAGE"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/motorWoltageLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/motorVoltageLabel" />
 
         <EditText
-            android:id="@+id/coreSupplyWoltageDisplay"
+            android:id="@+id/coreSupplyVoltageDisplay"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginTop="30dp"
@@ -197,8 +197,8 @@
             android:inputType="number"
             android:text="0"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/coreSupplyWoltageLabel"
-            app:layout_constraintTop_toBottomOf="@+id/motorWoltageDisplay" />
+            app:layout_constraintStart_toEndOf="@+id/coreSupplyVoltageLabel"
+            app:layout_constraintTop_toBottomOf="@+id/motorVoltageDisplay" />
 
         <TextView
             android:id="@+id/chargingLabel"
@@ -209,19 +209,16 @@
             android:layout_marginTop="50dp"
             android:text="CHARGING"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/coreSupplyWoltageLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/coreSupplyVoltageLabel" />
 
-        <EditText
+        <Switch
             android:id="@+id/chargingDisplay"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginTop="30dp"
-            android:ems="10"
-            android:inputType="number"
-            android:text="0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/chargingLabel"
-            app:layout_constraintTop_toBottomOf="@+id/coreSupplyWoltageDisplay" />
+            app:layout_constraintTop_toBottomOf="@+id/coreSupplyVoltageDisplay" />
 
         <TextView
             android:id="@+id/chargingCurrentLabel"
@@ -238,13 +235,15 @@
             android:id="@+id/chargingCurrentDisplay"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:layout_marginTop="30dp"
             android:ems="10"
             android:inputType="number"
             android:text="0"
+            android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/chargingCurrentLabel"
             app:layout_constraintTop_toBottomOf="@+id/chargingDisplay" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
