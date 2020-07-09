@@ -5,7 +5,7 @@ import kotlin.random.Random
 
 class bluetoothService {
     //TODO: Implement real bluetooth connection
-    fun getSettings() : settingsDto {
+    public fun getSettings() : settingsDto {
         return settingsDto(
             temperature = Random.nextInt(20,60),
             acceleration = Random.nextInt(20,60),
