@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".settingsView" android:screenOrientation="landscape"/>
-        <activity android:name=".shooterView" android:screenOrientation="landscape"/>
-        <activity android:name=".driverView" android:screenOrientation="landscape"/>
+        <activity android:name=".settings.SettingsActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".ShooterActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".DriverActivity" android:screenOrientation="landscape"/>
         <activity android:name=".MainActivity" android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

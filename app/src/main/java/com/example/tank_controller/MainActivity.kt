@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.example.tank_controller.settings.SettingsActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,19 +14,19 @@ class MainActivity : AppCompatActivity() {
 
         val driverButton = findViewById<Button>(R.id.driverViewButton)
         driverButton.setOnClickListener{
-            val intent = Intent(this, driverView::class.java)
+            val intent = Intent(this, DriverActivity::class.java)
             startActivity(intent)
         }
 
         val shooterButton = findViewById<Button>(R.id.shooterViewButton)
         shooterButton.setOnClickListener{
-            val intent = Intent(this, shooterView::class.java)
+            val intent = Intent(this, ShooterActivity::class.java)
             startActivity(intent)
         }
 
         val settingsButton = findViewById<Button>(R.id.settingsViewButton)
         settingsButton.setOnClickListener{
-            val intent = Intent(this, settingsView::class.java)
+            val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
     }

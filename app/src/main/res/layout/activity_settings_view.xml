@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".settingsView">
+    tools:context=".settings.SettingsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="367dp"
@@ -16,7 +16,7 @@
             android:layout_height="20dp"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="80dp"
             android:text="TEMPERATURE"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +25,7 @@
             android:id="@+id/temperatureDisplay"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="70dp"
             android:ems="10"
             android:inputType="number"
             android:text="0"
@@ -137,7 +137,7 @@
             android:layout_height="20dp"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="80dp"
             android:text="POWER VOLTAGE"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -146,7 +146,7 @@
             android:id="@+id/powerVoltageDisplay"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="70dp"
             android:ems="10"
             android:inputType="number"
             android:text="0"
@@ -244,11 +244,11 @@
             app:layout_constraintTop_toBottomOf="@+id/chargingDisplay" />
 
         <Button
-            android:id="@+id/refresh"
+            android:id="@+id/refresh_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
             android:text="REFRESH"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
