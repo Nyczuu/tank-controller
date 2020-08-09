@@ -1,5 +1,6 @@
 package com.example.tank_controller.settings
 
+import android.bluetooth.BluetoothAdapter
 import kotlin.random.Random
 
 private val service: SettingsBluetooth = SettingsBluetoothFake()
