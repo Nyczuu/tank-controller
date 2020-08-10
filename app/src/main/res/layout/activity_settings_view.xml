@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/tlo_metal"
     tools:context=".settings.SettingsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,6 +19,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="80dp"
             android:text="TEMPERATURE"
+            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,6 +31,7 @@
             android:ems="10"
             android:inputType="number"
             android:text="0"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/temperatureLabel"
             app:layout_constraintTop_toTopOf="parent" />
@@ -41,6 +44,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="50dp"
             android:text="ACCELERATION"
+            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/temperatureLabel" />
 
@@ -52,6 +56,7 @@
             android:ems="10"
             android:inputType="number"
             android:text="0"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/accelerationLabel"
             app:layout_constraintTop_toBottomOf="@+id/temperatureDisplay" />
@@ -64,6 +69,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="50dp"
             android:text="SPEED"
+            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/accelerationLabel" />
 
@@ -75,6 +81,7 @@
             android:ems="10"
             android:inputType="number"
             android:text="0"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/speedLabel"
             app:layout_constraintTop_toBottomOf="@+id/accelerationDisplay" />
@@ -87,6 +94,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="50dp"
             android:text="BATTERY LEVEL"
+            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/speedLabel" />
 
@@ -98,6 +106,7 @@
             android:ems="10"
             android:inputType="number"
             android:text="0"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/batteryLevelLabel"
             app:layout_constraintTop_toBottomOf="@+id/speeedDisplay" />
@@ -110,6 +119,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="50dp"
             android:text="PWM WIDTH"
+            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/batteryLevelLabel" />
 
@@ -121,6 +131,7 @@
             android:ems="10"
             android:inputType="number"
             android:text="0"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/pwmWidthLabel"
             app:layout_constraintTop_toBottomOf="@+id/batteryLevelDisplay" />
@@ -139,6 +150,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="80dp"
             android:text="POWER VOLTAGE"
+            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -150,6 +162,7 @@
             android:ems="10"
             android:inputType="number"
             android:text="0"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/powerVoltageLabel"
             app:layout_constraintTop_toTopOf="parent" />
@@ -162,6 +175,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="50dp"
             android:text="MOTOR VOLTAGE"
+            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/powerVoltageLabel" />
 
@@ -173,6 +187,7 @@
             android:ems="10"
             android:inputType="number"
             android:text="0"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/motorVoltageLabel"
             app:layout_constraintTop_toBottomOf="@+id/powerVoltageDisplay" />
@@ -185,6 +200,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="50dp"
             android:text="CORE VOLTAGE"
+            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/motorVoltageLabel" />
 
@@ -196,6 +212,7 @@
             android:ems="10"
             android:inputType="number"
             android:text="0"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/coreSupplyVoltageLabel"
             app:layout_constraintTop_toBottomOf="@+id/motorVoltageDisplay" />
@@ -208,6 +225,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="50dp"
             android:text="CHARGING"
+            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/coreSupplyVoltageLabel" />
 
@@ -216,6 +234,7 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginTop="30dp"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/chargingLabel"
             app:layout_constraintTop_toBottomOf="@+id/coreSupplyVoltageDisplay" />
@@ -228,6 +247,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="50dp"
             android:text="CHARGING CURRENT"
+            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chargingLabel" />
 
@@ -238,7 +258,8 @@
             android:ems="10"
             android:inputType="number"
             android:text="0"
-            android:layout_marginTop="30dp"
+
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/chargingCurrentLabel"
             app:layout_constraintTop_toBottomOf="@+id/chargingDisplay" />
