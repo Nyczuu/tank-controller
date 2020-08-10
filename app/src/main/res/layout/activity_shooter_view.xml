@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/tlo_metal"
+
     tools:context=".shooterView">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="367dp"
@@ -20,7 +23,8 @@
             android:progress="50"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/rotateTowerLabel"
@@ -28,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="FORWARD/BACKWARD"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toTopOf="@+id/rotateTower"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -44,18 +49,24 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="FIRE"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toTopOf="@+id/fireButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
             android:id="@+id/fireButton"
-            android:layout_width="175dp"
-            android:layout_height="175dp"
+            style="@android:style/Widget.Holo.ImageButton"
+            android:layout_width="169dp"
+            android:layout_height="169dp"
+            android:background="#00000000"
+            android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_mylocation" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/button_bez_tla"
+            tools:srcCompat="@drawable/button_bez_tla" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

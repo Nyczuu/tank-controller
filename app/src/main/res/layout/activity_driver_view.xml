@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/tlo_metal"
     tools:context=".driverView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,6 +31,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:text="ENGINE ON/OFF"
+            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,6 +43,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:text="Engine"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/engineLabel" />
 
@@ -52,6 +55,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
             android:text="LIGHTS ON/OFF"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,6 +67,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
             android:text="Lights"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lightsLabel" />
 
@@ -72,6 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="FORWARD/BACKWARD"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toTopOf="@+id/moveForwardBackward"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -102,6 +108,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:text="CURRENT SPEED:"
+            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -115,6 +122,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text="0"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -124,6 +132,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="LEFT/RIGHT"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toTopOf="@+id/moveLeftRight"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
