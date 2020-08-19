@@ -9,8 +9,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeout
 
 class SettingsRepository(val bluetooth: SettingsBluetooth, val settingsDao: SettingsDao) {
-    val currentSettings: LiveData<SettingsModelBusiness?> = settingsDao.settingsLiveData.map { item -> SettingsModelBusiness(
-        item!!.temperature, item.acceleration, item.speed, item.batterLevel, item.pwmWidth, item.powerVoltage, item.motorVoltage, item.coreVoltage, item.chargingCurrent, item.charging ) }
+    val currentSettings: LiveData<SettingsModelBusiness?> = settingsDao.settingsLiveData.map { item ->
+        SettingsModelBusiness(item?.temperature, item?.acceleration, item?.speed, item?.batterLevel, item?.pwmWidth, item?.powerVoltage, item?.motorVoltage, item?.coreVoltage, item?.chargingCurrent, item?.charging )
+    }
 
     suspend fun refreshSettings() {
         try
@@ -21,9 +22,17 @@ class SettingsRepository(val bluetooth: SettingsBluetooth, val settingsDao: Sett
 
             val resultParsed = Gson().fromJson(resultJson, SettingsModelBusiness::class.java)
 
-            settingsDao.insertSettings(SettingsModelDb(temperature = resultParsed.temperature, acceleration =  resultParsed.acceleration, speed = resultParsed.speed,
-                batterLevel = resultParsed.batterLevel, pwmWidth = resultParsed.pwmWidth, powerVoltage = resultParsed.powerVoltage, motorVoltage = resultParsed.motorVoltage,
-                coreVoltage =  resultParsed.coreVoltage, chargingCurrent = resultParsed.chargingCurrent, charging = resultParsed.charging))
+            settingsDao.insertSettings(SettingsModelDb(
+                temperature = resultParsed.temperature?:0,
+                acceleration =  resultParsed.acceleration?:0,
+                speed = resultParsed.speed?:0,
+                batterLevel = resultParsed.batterLevel?:0,
+                pwmWidth = resultParsed.pwmWidth?:0,
+                powerVoltage = resultParsed.powerVoltage?:0.0,
+                motorVoltage = resultParsed.motorVoltage?:0.0,
+                coreVoltage =  resultParsed.coreVoltage?:0.0,
+                chargingCurrent = resultParsed.chargingCurrent?:0,
+                charging = resultParsed.charging?:false))
 
         } catch (error: Throwable){
             throw SettingsRefreshError("Unable to refresh settings", error)

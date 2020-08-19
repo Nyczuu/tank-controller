@@ -30,17 +30,8 @@ class SettingsActivity : AppCompatActivity() {
         val charging: Switch = findViewById(R.id.chargingDisplay)
 
         val database = getDatabase(this)
-        val repository = SettingsRepository(
-            getBluetoothService(),
-            database.settingsDao
-        )
-        val viewModel = ViewModelProviders
-            .of(this,
-                SettingsViewModel.FACTORY(
-                    repository
-                )
-            )
-            .get(SettingsViewModel::class.java)
+        val repository = SettingsRepository(getBluetoothService(), database.settingsDao)
+        val viewModel = SettingsViewModel(repository)
 
         viewModel.settings.observe(this) { value ->
             value?.let {
@@ -53,7 +44,7 @@ class SettingsActivity : AppCompatActivity() {
                 motorVoltage?.setText("${value.motorVoltage}")
                 coreVoltage?.setText("${value.coreVoltage}")
                 chargingCurrent?.setText("${value.chargingCurrent}")
-                charging?.setChecked(value.charging)
+                charging?.setChecked(value.charging?:false)
             }
         }
 

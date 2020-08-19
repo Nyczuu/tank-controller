@@ -6,7 +6,7 @@ import com.example.tank_controller.utilities.singleArgViewModelFactory
 import kotlinx.coroutines.launch
 
 class SettingsViewModel(private val repository: SettingsRepository) : ViewModel(){
-    companion object{
+    companion object {
         val FACTORY = singleArgViewModelFactory(::SettingsViewModel)
     }
 
