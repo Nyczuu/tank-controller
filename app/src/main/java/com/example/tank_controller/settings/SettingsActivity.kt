@@ -1,15 +1,15 @@
 package com.example.tank_controller.settings
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Switch
-import androidx.lifecycle.ViewModelProviders
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
-import com.example.tank_controller.*
-import kotlin.random.Random
+import com.example.tank_controller.BluetoothService
+import com.example.tank_controller.R
+import org.jetbrains.anko.toast
+import java.lang.Exception
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -30,7 +30,7 @@ class SettingsActivity : AppCompatActivity() {
         val charging: Switch = findViewById(R.id.chargingDisplay)
 
         val database = getDatabase(this)
-        val repository = SettingsRepository(getBluetoothService(), database.settingsDao)
+        val repository = SettingsRepository(database.settingsDao)
         val viewModel = SettingsViewModel(repository)
 
         viewModel.settings.observe(this) { value ->
@@ -50,7 +50,7 @@ class SettingsActivity : AppCompatActivity() {
 
         val shooterButton = findViewById<Button>(R.id.refresh_settings)
         shooterButton.setOnClickListener {
-            viewModel.onRefreshButtonClicked()
+                viewModel.onRefreshButtonClicked()
         }
     }
 }

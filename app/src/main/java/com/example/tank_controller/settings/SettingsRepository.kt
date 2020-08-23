@@ -2,22 +2,25 @@ package com.example.tank_controller.settings
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
+import com.example.tank_controller.BluetoothService
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeout
 
-class SettingsRepository(val bluetooth: SettingsBluetooth, val settingsDao: SettingsDao) {
+class SettingsRepository(val settingsDao: SettingsDao) {
     val currentSettings: LiveData<SettingsModelBusiness?> = settingsDao.settingsLiveData.map { item ->
         SettingsModelBusiness(item?.temperature, item?.acceleration, item?.speed, item?.batterLevel, item?.pwmWidth, item?.powerVoltage, item?.motorVoltage, item?.coreVoltage, item?.chargingCurrent, item?.charging )
     }
+
+    var bluetoothService = BluetoothService.instance
 
     suspend fun refreshSettings() {
         try
         {
             val resultJson = withTimeout(5_000) {
-                bluetooth.fetchSettings()
+                bluetoothService.fetchSettings()
             }
 
             val resultParsed = Gson().fromJson(resultJson, SettingsModelBusiness::class.java)

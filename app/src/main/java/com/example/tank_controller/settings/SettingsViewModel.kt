@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tank_controller.utilities.singleArgViewModelFactory
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class SettingsViewModel(private val repository: SettingsRepository) : ViewModel(){
     companion object {

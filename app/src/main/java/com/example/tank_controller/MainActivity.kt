@@ -12,13 +12,8 @@ import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
 
-    var _bluetoothAdapter :BluetoothAdapter? = null
-    lateinit var pairedDevice: BluetoothDevice
+    var bluetoothService : BluetoothService = BluetoothService.instance
     val REQUEST_ENABLE_BLUETOOTH = 1
-
-    companion object {
-        val EXTRA_ADDRESS: String = "Device_address"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         if(requestCode == REQUEST_ENABLE_BLUETOOTH) {
             if(resultCode == Activity.RESULT_OK) {
-                if(_bluetoothAdapter!!.isEnabled) {
+                if(bluetoothService.bluetoothAdapter!!.isEnabled) {
                     toast("Bluetooth has been enabled")
                 } else {
                     toast("Bluetooth has been disabled")
@@ -45,19 +40,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun InitBluetooth() {
-        _bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+        bluetoothService.init()
 
-        if(_bluetoothAdapter==null) {
+        if(bluetoothService.bluetoothAdapter==null) {
             toast("This device doesn't support Bluetooth")
             return
         }
 
-        if(!_bluetoothAdapter!!.isEnabled) {
+        if(!bluetoothService.bluetoothAdapter!!.isEnabled) {
             val enableBluetoothIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
             startActivityForResult(enableBluetoothIntent, REQUEST_ENABLE_BLUETOOTH)
         }
 
-        //TODO: Zrobić coś z tym urzadzeniem XD
+        if(bluetoothService.bluetoothDevice == null){
+            toast("No connected device found")
+            return
+        }
     }
 
     fun InitButtons() {
