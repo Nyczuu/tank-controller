@@ -1,13 +1,15 @@
 package com.example.tank_controller
 
 import android.bluetooth.BluetoothAdapter
-import android.bluetooth.BluetoothClass
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.widget.Toast
 import java.io.IOException
-import java.lang.Exception
 import java.util.*
-import kotlin.random.Random
+
 
 class BluetoothService  {
     companion object {
@@ -28,6 +30,10 @@ class BluetoothService  {
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
         if(bluetoothAdapter == null)
             return
+
+        bluetoothAdapter!!.startDiscovery()
+
+
 
         if(!bluetoothAdapter!!.bondedDevices.any())
             return
@@ -90,3 +96,5 @@ class BluetoothService  {
         }
     }
 }
+
+

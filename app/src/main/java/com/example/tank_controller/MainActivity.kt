@@ -3,7 +3,10 @@ package com.example.tank_controller
 import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -40,8 +43,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun InitBluetooth() {
-        bluetoothService.init()
+        var bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+        if(bluetoothAdapter == null)
+            return
 
+        if(bluetoothAdapter!!.isDiscovering())
+            bluetoothAdapter!!.cancelDiscovery()
+
+        bluetoothAdapter!!.startDiscovery()
+        this.registerReceiver(SingBroadcastReceiver() , IntentFilter(BluetoothDevice.ACTION_FOUND))
+
+        //if(!bluetoothAdapter!!.bondedDevices.any())
+         //   return
+
+        //bluetoothDevice = bluetoothAdapter!!.bondedDevices.first()
+
+/*
         if(bluetoothService.bluetoothAdapter==null) {
             toast("This device doesn't support Bluetooth")
             return
@@ -56,6 +73,7 @@ class MainActivity : AppCompatActivity() {
             toast("No connected device found")
             return
         }
+ */
     }
 
     fun InitButtons() {
@@ -75,6 +93,18 @@ class MainActivity : AppCompatActivity() {
         settingsButton.setOnClickListener{
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
+        }
+    }
+}
+
+private class SingBroadcastReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context?, intent: Intent) {
+        val action =
+            intent.action
+        if (BluetoothDevice.ACTION_FOUND == action) {
+
+            val device =
+                intent.getParcelableExtra<BluetoothDevice>(BluetoothDevice.EXTRA_DEVICE)
         }
     }
 }
