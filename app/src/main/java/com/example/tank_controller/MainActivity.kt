@@ -7,23 +7,31 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.example.tank_controller.settings.SettingsActivity
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
 
+    var bluetoothReciver : BluetoothReciver? = null
     var bluetoothService : BluetoothService = BluetoothService.instance
     val REQUEST_ENABLE_BLUETOOTH = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        ConfigureReceiver()
         InitBluetooth()
         InitButtons()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(bluetoothReciver)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -42,38 +50,39 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun ConfigureReceiver() {
+        val filter = IntentFilter()
+        filter.addAction(BluetoothDevice.ACTION_FOUND)
+        filter.addAction(BluetoothDevice.ACTION_PAIRING_REQUEST)
+        filter.addAction(BluetoothDevice.ACTION_BOND_STATE_CHANGED)
+        bluetoothReciver = BluetoothReciver()
+        registerReceiver(bluetoothReciver, filter)
+    }
+
+
+
     fun InitBluetooth() {
         var bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
-        if(bluetoothAdapter == null)
-            return
 
-        if(bluetoothAdapter!!.isDiscovering())
-            bluetoothAdapter!!.cancelDiscovery()
-
-        bluetoothAdapter!!.startDiscovery()
-        this.registerReceiver(SingBroadcastReceiver() , IntentFilter(BluetoothDevice.ACTION_FOUND))
-
-        //if(!bluetoothAdapter!!.bondedDevices.any())
-         //   return
-
-        //bluetoothDevice = bluetoothAdapter!!.bondedDevices.first()
-
-/*
-        if(bluetoothService.bluetoothAdapter==null) {
+        if(bluetoothAdapter==null) {
             toast("This device doesn't support Bluetooth")
             return
         }
 
-        if(!bluetoothService.bluetoothAdapter!!.isEnabled) {
+        if(!bluetoothAdapter!!.isEnabled) {
             val enableBluetoothIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
             startActivityForResult(enableBluetoothIntent, REQUEST_ENABLE_BLUETOOTH)
         }
 
-        if(bluetoothService.bluetoothDevice == null){
-            toast("No connected device found")
-            return
+        if(bluetoothAdapter!!.isDiscovering()){
+            bluetoothAdapter!!.cancelDiscovery()
         }
- */
+
+        if(bluetoothAdapter!!.bondedDevices.any()) {
+
+        } else {
+            bluetoothAdapter!!.startDiscovery()
+        }
     }
 
     fun InitButtons() {
@@ -97,14 +106,10 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-private class SingBroadcastReceiver : BroadcastReceiver() {
-    override fun onReceive(context: Context?, intent: Intent) {
-        val action =
-            intent.action
-        if (BluetoothDevice.ACTION_FOUND == action) {
-
-            val device =
-                intent.getParcelableExtra<BluetoothDevice>(BluetoothDevice.EXTRA_DEVICE)
+class BluetoothReciver: BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+        if (intent.action == BluetoothDevice.ACTION_FOUND) {
+            val device = intent.getParcelableExtra<BluetoothDevice>(BluetoothDevice.EXTRA_DEVICE)
         }
     }
 }
