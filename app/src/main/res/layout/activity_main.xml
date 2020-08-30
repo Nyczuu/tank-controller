@@ -7,43 +7,54 @@
     android:background="@drawable/tlo_metal"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="450dp"
-        android:layout_height="165dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/connectViewButton"
+            android:text="Connect"
+            android:enabled="true"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginStart="150dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginEnd="150dp"/>
 
         <Button
             android:id="@+id/driverViewButton"
-            android:layout_width="450dp"
-            android:layout_height="55dp"
             android:text="Driver"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:enabled="false"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginStart="150dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginEnd="150dp"/>
 
         <Button
             android:id="@+id/shooterViewButton"
-            android:layout_width="450dp"
-            android:layout_height="55dp"
             android:text="Shooter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/driverViewButton" />
+            android:enabled="false"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginStart="150dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginEnd="150dp" />
 
         <Button
             android:id="@+id/settingsViewButton"
-            android:layout_width="450dp"
-            android:layout_height="55dp"
             android:text="Settings"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/shooterViewButton" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:enabled="false"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginStart="150dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginEnd="150dp" />
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
