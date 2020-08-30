@@ -48,8 +48,8 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
-        val shooterButton = findViewById<Button>(R.id.refresh_settings)
-        shooterButton.setOnClickListener {
+        val refreshButton = findViewById<Button>(R.id.refresh_settings)
+        refreshButton.setOnClickListener {
                 viewModel.onRefreshButtonClicked()
         }
     }

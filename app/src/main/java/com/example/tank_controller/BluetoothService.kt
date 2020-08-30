@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
+import com.example.tank_controller.settings.SettingsModelBusiness
 import java.io.IOException
 import java.lang.Exception
 import java.net.Inet4Address
@@ -19,8 +20,21 @@ class BluetoothService  {
         var bluetoothSocket : BluetoothSocket? = null
     }
 
-    suspend fun fetchSettings(): String {
-        return ""
+    fun fetchSettings(): SettingsModelBusiness {
+        sendCommand("settings")
+        var data = readData().split(',')
+        return SettingsModelBusiness(
+            data[0].toIntOrNull(),
+            data[1].toIntOrNull(),
+            data[2].toIntOrNull(),
+            data[3].toIntOrNull(),
+            data[4].toIntOrNull(),
+            data[5].toDoubleOrNull(),
+            data[6].toDoubleOrNull(),
+            data[7].toDoubleOrNull(),
+            data[8].toIntOrNull(),
+            data[9].toBoolean()
+            )
     }
 
     fun isConnectedWithDevice(): Boolean {
@@ -60,31 +74,39 @@ class BluetoothService  {
         }
     }
 
-    fun readData(){
+    fun readData():String{
         val buffer = ByteArray(1024)
         var bytes: Int
+        var result:String = ""
 
         if(bluetoothSocket == null)
             Exception("You must connect to Bluetooth device first!")
 
             try {
                 bytes = bluetoothSocket!!.inputStream.read(buffer)
-                val readMessage = String(buffer, 0, bytes)
+                result = String(buffer, 0, bytes)
             } catch (e: IOException){
                 e.printStackTrace()
             }
+        return result
     }
 
     fun sendCommand(command:String) {
+        var defaultCommandLength = 10
+
         if(bluetoothSocket == null)
             Exception("You must connect to Bluetooth device first!")
 
-            try{
-                bluetoothSocket!!.outputStream.write(command.toByteArray())
-            } catch (e: IOException){
-                e.printStackTrace()
-            }
+        if(command.length > defaultCommandLength)
+            Exception("Command can have max 10 characters")
 
+        var commandPadded = command.padEnd(defaultCommandLength,'_')
+
+        try {
+            bluetoothSocket!!.outputStream.write(commandPadded.toByteArray())
+        } catch (e: IOException){
+            e.printStackTrace()
+        }
     }
 }
 
