@@ -14,13 +14,11 @@ class SettingsRepository(val settingsDao: SettingsDao) {
         SettingsModelBusiness(item?.temperature, item?.acceleration, item?.speed, item?.batterLevel, item?.pwmWidth, item?.powerVoltage, item?.motorVoltage, item?.coreVoltage, item?.chargingCurrent, item?.charging )
     }
 
-    var bluetoothService = BluetoothService.instance
-
     suspend fun refreshSettings() {
         try
         {
             val resultJson = withTimeout(5_000) {
-                bluetoothService.fetchSettings()
+                BluetoothService().fetchSettings()
             }
 
             val resultParsed = Gson().fromJson(resultJson, SettingsModelBusiness::class.java)

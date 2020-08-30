@@ -17,7 +17,6 @@
         <Button
             android:id="@+id/connectViewButton"
             android:text="Connect"
-            android:enabled="true"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginStart="150dp"
@@ -27,7 +26,6 @@
         <Button
             android:id="@+id/driverViewButton"
             android:text="Driver"
-            android:enabled="false"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginStart="150dp"
@@ -37,7 +35,6 @@
         <Button
             android:id="@+id/shooterViewButton"
             android:text="Shooter"
-            android:enabled="false"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginStart="150dp"
@@ -47,7 +44,6 @@
         <Button
             android:id="@+id/settingsViewButton"
             android:text="Settings"
-            android:enabled="false"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginStart="150dp"

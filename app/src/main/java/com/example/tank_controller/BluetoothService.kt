@@ -8,92 +8,83 @@ import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import java.io.IOException
+import java.lang.Exception
+import java.net.Inet4Address
 import java.util.*
 
 
 class BluetoothService  {
     companion object {
-        val instance = BluetoothService()
+        var bluetoothAdapter : BluetoothAdapter? = null
+        var bluetoothSocket : BluetoothSocket? = null
     }
-
-    val myUIID : UUID = UUID.randomUUID()
-    var isConnected: Boolean = false
-    var bluetoothDevice: BluetoothDevice? = null
-    var bluetoothAdapter: BluetoothAdapter? = null
-    var bluetoothSocket: BluetoothSocket? = null
 
     suspend fun fetchSettings(): String {
         return ""
     }
 
-    fun init() {
-        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+    fun isConnectedWithDevice(): Boolean {
+        if(bluetoothSocket == null)
+            return false
+
+        return bluetoothSocket!!.isConnected
+    }
+
+    fun setBluetoothAdapter(adapter: BluetoothAdapter) {
+        bluetoothAdapter = adapter
+    }
+
+    fun getPairedDevices(): Set<BluetoothDevice> {
         if(bluetoothAdapter == null)
-            return
+            Exception("You must set Bluetooth adapter first!")
 
-        bluetoothAdapter!!.startDiscovery()
+        return bluetoothAdapter!!.bondedDevices
+    }
 
+    fun selectDevice(address: String) {
+        if(bluetoothAdapter == null)
+            Exception("You must set Bluetooth adapter first!")
 
+        val device = bluetoothAdapter!!.bondedDevices.first { it.address == address }
+        val myUIID : UUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
+        bluetoothSocket = device!!.createInsecureRfcommSocketToServiceRecord(myUIID)
 
-        if(!bluetoothAdapter!!.bondedDevices.any())
-            return
-
-        bluetoothDevice = bluetoothAdapter!!.bondedDevices.first()
-        connect()
+        try {
+            bluetoothSocket!!.connect()
+        }
+        catch(e: IOException) {
+            var deviceJava = bluetoothSocket!!.remoteDevice.javaClass
+            var paramTypes = arrayOf<Class<*>>(Integer.TYPE)
+            bluetoothSocket = deviceJava.getMethod("createRfcommSocket", *paramTypes).invoke(bluetoothSocket!!.remoteDevice, Integer.valueOf(2)) as BluetoothSocket
+            bluetoothSocket!!.connect()
+        }
     }
 
     fun readData(){
         val buffer = ByteArray(1024)
         var bytes: Int
 
-        if(bluetoothSocket != null) {
+        if(bluetoothSocket == null)
+            Exception("You must connect to Bluetooth device first!")
+
             try {
                 bytes = bluetoothSocket!!.inputStream.read(buffer)
                 val readMessage = String(buffer, 0, bytes)
             } catch (e: IOException){
                 e.printStackTrace()
             }
-        }
     }
 
     fun sendCommand(command:String) {
-        if(bluetoothSocket != null) {
+        if(bluetoothSocket == null)
+            Exception("You must connect to Bluetooth device first!")
+
             try{
                 bluetoothSocket!!.outputStream.write(command.toByteArray())
             } catch (e: IOException){
                 e.printStackTrace()
             }
-        }
-    }
 
-    fun connect() {
-        try {
-            if(bluetoothSocket == null || !isConnected) {
-                if(bluetoothAdapter == null)
-                    throw Exception("Bluetooth adapter must be configured before connection");
-                if(bluetoothDevice == null)
-                    throw Exception("Bluetooth device must be configured before connection");
-
-                bluetoothSocket = bluetoothDevice!!.createInsecureRfcommSocketToServiceRecord(myUIID)
-                BluetoothAdapter.getDefaultAdapter().cancelDiscovery()
-                bluetoothSocket!!.connect()
-                isConnected = true
-            }
-        } catch (e: IOException){
-            e.printStackTrace()
-        }
-    }
-
-    fun disconnect() {
-        if(bluetoothSocket != null) {
-            try {
-                bluetoothSocket!!.close()
-                bluetoothSocket = null
-                isConnected = false
-            } catch (e: IOException){
-                e.printStackTrace()
-            }
-        }
     }
 }
 

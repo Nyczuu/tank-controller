@@ -24,72 +24,60 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    val bluetoothService = BluetoothService()
+
+    lateinit var connectButton : Button
+    lateinit var driverButton : Button
+    lateinit var shooterButton : Button
+    lateinit var settingsButton : Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         InitButtons()
     }
 
+    override fun onStart() {
+        super.onStart()
+        UpdateButtons()
+    }
+
     fun InitButtons() {
-        val connectButton = findViewById<Button>(R.id.connectViewButton)
+        connectButton = findViewById<Button>(R.id.connectViewButton)
         connectButton.setOnClickListener{
             val intent = Intent(this, ConnectActivity::class.java)
             startActivity(intent)
         }
 
-        val driverButton = findViewById<Button>(R.id.driverViewButton)
+        driverButton = findViewById<Button>(R.id.driverViewButton)
         driverButton.setOnClickListener{
             val intent = Intent(this, DriverActivity::class.java)
             startActivity(intent)
         }
 
-        val shooterButton = findViewById<Button>(R.id.shooterViewButton)
+        shooterButton = findViewById<Button>(R.id.shooterViewButton)
         shooterButton.setOnClickListener{
             val intent = Intent(this, ShooterActivity::class.java)
             startActivity(intent)
         }
 
-        val settingsButton = findViewById<Button>(R.id.settingsViewButton)
+        settingsButton = findViewById<Button>(R.id.settingsViewButton)
         settingsButton.setOnClickListener{
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
     }
 
+    fun UpdateButtons() {
+        if(bluetoothService.isConnectedWithDevice()) {
+            settingsButton.isEnabled = true
+            shooterButton.isEnabled = true
+            driverButton.isEnabled = true
+        }
+        else {
+            settingsButton.isEnabled = false
+            shooterButton.isEnabled = false
+            driverButton.isEnabled = false
+        }
+    }
 }
-
-
-//        if(bluetoothAdapter!!.bondedDevices.any()) {
-//            val macAddress:String = "98:D3:31:FB:55:E6"
-////            val macAddress:String = "D0:7F:A0:18:E3:D8"
-//
-//            val password = "1234"
-//            val device =
-//                bluetoothAdapter!!.bondedDevices.first{ it.address == macAddress }
-//            val myUIID : UUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
-//
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//                //device!!.setPin(password.toByteArray())
-//                //device!!.setPairingConfirmation(true)
-//
-//            }
-//            var  bluetoothSocket = device!!.createInsecureRfcommSocketToServiceRecord(myUIID)
-//            //BluetoothAdapter.getDefaultAdapter().cancelDiscovery()
-//            bluetoothAdapter!!.cancelDiscovery()
-//            try{
-//                bluetoothSocket!!.connect()
-//            }
-//            catch(e: IOException){
-//                var deviceJava = bluetoothSocket.remoteDevice.javaClass
-//                var paramTypes = arrayOf<Class<*>>(Integer.TYPE)
-//                bluetoothSocket = deviceJava.getMethod("createRfcommSocket", *paramTypes).invoke(bluetoothSocket.remoteDevice, Integer.valueOf(2)) as BluetoothSocket
-//                bluetoothSocket!!.connect()
-//            }
-//            val command:String = "A00000"
-//            try{
-//                bluetoothSocket!!.outputStream.write(command.toByteArray())
-//            } catch (e: IOException){
-//                e.printStackTrace()
-//            }
-//        }
-
