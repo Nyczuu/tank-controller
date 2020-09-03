@@ -18,7 +18,8 @@ class SettingsViewModel(private val repository: SettingsRepository) : ViewModel(
     }
 
     private fun refreshSettings() {
+        viewModelScope.launch {
             repository.refreshSettings()
-
+        }
     }
 }

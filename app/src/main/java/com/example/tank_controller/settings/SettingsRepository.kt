@@ -14,7 +14,7 @@ class SettingsRepository(val settingsDao: SettingsDao) {
         SettingsModelBusiness(item?.temperature, item?.acceleration, item?.speed, item?.batterLevel, item?.pwmWidth, item?.powerVoltage, item?.motorVoltage, item?.coreVoltage, item?.chargingCurrent, item?.charging )
     }
 
-    fun refreshSettings() {
+    suspend fun refreshSettings() {
         try
         {
             val resultParsed =
