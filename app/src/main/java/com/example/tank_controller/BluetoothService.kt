@@ -20,8 +20,9 @@ class BluetoothService  {
         var bluetoothSocket : BluetoothSocket? = null
     }
 
-    fun fetchSettings(): SettingsModelBusiness {
+    suspend fun fetchSettings(): SettingsModelBusiness {
         sendCommand("settings")
+        Thread.sleep(1_000)
         var data = readData().split(',')
         return SettingsModelBusiness(
             data[0].toIntOrNull(),

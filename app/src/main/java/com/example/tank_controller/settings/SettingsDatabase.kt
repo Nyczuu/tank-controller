@@ -15,7 +15,7 @@ import androidx.room.RoomDatabase
 @Dao
 interface SettingsDao{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertSettings(settingsDbModel: SettingsModelDb)
+    fun insertSettings(settingsDbModel: SettingsModelDb)
 
     @get:Query("select * from SettingsModelDb where id =0")
     val settingsLiveData: LiveData<SettingsModelDb?>
@@ -37,6 +37,7 @@ fun getDatabase(context:Context): SettingsDatabase {
                     SettingsDatabase::class.java,
                     "settings_db"
                 )
+                .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
                 .build()
         }
