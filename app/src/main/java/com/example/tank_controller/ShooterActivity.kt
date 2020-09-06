@@ -32,11 +32,11 @@ class ShooterActivity : AppCompatActivity() {
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                toast("Rotation has been started")
+
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                toast("Rotation has been stopped")
+
             }
         })
 

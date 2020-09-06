@@ -16,9 +16,10 @@ class DriverActivity : AppCompatActivity() {
     lateinit var engine:ToggleButton
     lateinit var lights:ToggleButton
     lateinit var speedTextBox:EditText
-    var speed:Int = 128
-    var direction:Int = 128
-
+    var speed:Int = 50
+    var speedParsed:String = ""
+    var direction:Int = 50
+    var directionParsed:String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,15 +31,18 @@ class DriverActivity : AppCompatActivity() {
         moveForwardBackward.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
                 speed = i
-                bluetoothService.sendCommand("M$speed,$direction")
+                speedParsed = assignZero("$speed")
+                directionParsed = assignZero("$direction")
+                bluetoothService.sendCommand("M$speedParsed,$directionParsed")
+                refreshCurrentSpeed()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                toast("Speed has been started")
+
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                toast("Speed has been stopped")
+
             }
         })
 
@@ -46,15 +50,18 @@ class DriverActivity : AppCompatActivity() {
         moveLeftRight.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
                 direction = i
-                bluetoothService.sendCommand("M$speed,$direction")
+                speedParsed = assignZero("$speed")
+                directionParsed = assignZero("$direction")
+                bluetoothService.sendCommand("M$speedParsed,$directionParsed")
+                refreshCurrentSpeed()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                toast("Direction has been started")
+
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                toast("Direction has been stopped")
+
             }
         })
 
@@ -83,5 +90,18 @@ class DriverActivity : AppCompatActivity() {
     fun refreshCurrentSpeed(){
         bluetoothService.sendCommand("speed")
         speedTextBox.setText(bluetoothService.readData())
+    }
+    fun assignZero(value: String):String
+    {
+        var result:String = ""
+        if (value.length < 3)
+        {
+            result = value.padStart(3,'0')
+        }
+        else
+        {
+            result = value
+        }
+        return result
     }
 }
